@@ -5,6 +5,7 @@ import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
+
   
 @override
   Widget build(BuildContext context) {
@@ -74,18 +75,18 @@ class RegisterPage extends StatelessWidget {
                 ),
 
                 Positioned(
-                  bottom: 110,
-                  right: 265,
-                  child: Container(
-                    width: 255,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      color: Colors.white, 
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: const Color.fromRGBO(89, 93, 229, 1.0), 
+                    bottom: 110,
+                    right: 265,
+                    child: Container(
+                      width: 255,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: const Color.fromRGBO(89, 93, 229, 1.0),
                         ),
-                    ),
+                      ),
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -104,7 +105,7 @@ class RegisterPage extends StatelessWidget {
                       shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
                     ),
                       child: const Text(
-                        'Sign up',
+                        'Sign in',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 18,
@@ -194,6 +195,7 @@ class RegisterPage extends StatelessWidget {
                         Color(0xFF595DE5),
                       ],
                     ),
+
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -202,6 +204,28 @@ class RegisterPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+class DialogHelper {
+  static void showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Hello,"),
+          content: Text("Send an email to the administrator contains your documents\n (diplom,agreement)to validate your account"),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+
+              onPressed: () {
+                Navigator.of(context).pop(); // Fermer la boîte de dialogue
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

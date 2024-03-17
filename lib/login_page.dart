@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:web_application/fields/my_button.dart';
 import 'fields/login_field.dart';
 import 'register_page.dart';
+import 'doctor_page.dart';
+import 'forgotpassword.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
-  
+
 @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,30 +62,74 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 85),
+                    padding: const EdgeInsets.only(left: 400),
+                    //padding: EdgeInsets.only(left: 150, right: 150),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
+                        );
+                      },
                       child: Text(
                         'Forgot password?',
                         style: TextStyle(
-                          color: Colors.grey[600],
+                          color: const Color.fromRGBO(89, 93, 229, 1.0), // Changer la couleur pour indiquer qu'il s'agit d'un lien
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
+                         // decoration: TextDecoration.underline, // Ajouter un soulignement pour indiquer qu'il s'agit d'un lien
                         ),
                       ),
                     ),
                   ),
+
                   const SizedBox(height: 35),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 175),
-                    child: MyButton(
-                      gradientColors: [
-                        Color(0xFF8D91FD),
-                        Color(0xFF595DE5),
-                      ],
+                  Padding(
+                    padding: EdgeInsets.only(left: 150, right: 150),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Ajoutez ici la logique à exécuter lorsque le bouton est cliqué
+                        // Par exemple, naviguer vers la page 'DoctorPage'
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DashboardScreen()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.zero, // Supprimer le rembourrage par défaut
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Color(0xFF8D91FD),
+                              Color(0xFF595DE5),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          height: 55,
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Sign up',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+
                 ],
               ),
             ),
@@ -92,11 +138,11 @@ class LoginPage extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  right: 0, 
-                  top: 0, 
+                  right: 0,
+                  top: 0,
                   child: Container(
-                    width: 450, 
-                    height: MediaQuery.of(context).size.height, 
+                    width: 450,
+                    height: MediaQuery.of(context).size.height,
                     child: Image.asset(
                       'assets/background.jpg',
                       fit: BoxFit.cover,
@@ -118,7 +164,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         WidgetSpan(
-                          child: SizedBox(height: 35), 
+                          child: SizedBox(height: 35),
                         ),
                         TextSpan(
                           text: 'Lorem ipsum dolor sit amet est sodales elit.',
@@ -133,7 +179,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 180,
-                  right: 140, 
+                  right: 140,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -155,17 +201,17 @@ class LoginPage extends StatelessWidget {
                     width: 255,
                     height: 55,
                     decoration: BoxDecoration(
-                      color: Colors.white, 
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                        color: const Color.fromRGBO(89, 93, 229, 1.0), 
+                        color: const Color.fromRGBO(89, 93, 229, 1.0),
                       ),
                     ),
-                     child: ElevatedButton(
+                    child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => RegisterPage()),
+                          MaterialPageRoute(builder: (context) => const RegisterPage()),
                         );
                       },
                       style: ButtonStyle(
@@ -183,7 +229,7 @@ class LoginPage extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 18,
-                          color: Color.fromRGBO(89, 93, 229, 1.0), 
+                          color: Color.fromRGBO(89, 93, 229, 1.0),
                         ),
                       ),
                     ),
